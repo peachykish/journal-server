@@ -1,0 +1,16 @@
+const { mainModule } = require('process');
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('workoutLog','postgres','password',{
+    host:'localhost', 
+    dialect: 'postgres'
+});
+
+sequelize.authenticate().then(
+    function(){
+        console.log('Connected to workoutLog in postgres database');
+    },
+    function(err){
+        console.log(err);
+    }
+);
+mainModule.exports = sequelize
